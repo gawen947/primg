@@ -23,10 +23,13 @@ Patches are welcome.
     So it will generally only modify the last line, unless the image is mostly
     filled. It would be nice if we could hide the "primificaton" as most as
     possible in the image pattern. Obviously the bottom right pixel would always
-    be filled. But I guess we can do better than that.
+    be filled. But I guess we can do better than what we have now.
+  * Can we go faster? We seek the nearest prime. But if we know there is a
+    probable prime a bit further up the road that doesn't affect the image pattern,
+    we can check this one instead.
   * Only the PBM ASCII format is supported. It would be nice if we
     could use binary PBM too. It is really easy to implement.
   * The current output format is PBM ASCII, but we could also select between
     binary PBM, or decimal.
   * A manpage.
-  * See FIXME and TODO in the code.
+  * See others FIXME and TODO in the code.
