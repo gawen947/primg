@@ -19,7 +19,7 @@ for bit twiddling and playing with primes. The rest of it is done by hand.
 Still far from perfect, there are things to fix or implement.
 Patches are welcome.
 
-  * Only the the PBM ASCII format is supported. It would be nice if we
+  * Only the PBM ASCII format is supported. It would be nice if we
     could use binary PBM too. It is really easy to implement.
   * The current output format is PBM ASCII, but we could also select between
     binary PBM, or decimal.
