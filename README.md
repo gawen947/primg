@@ -19,6 +19,11 @@ for bit twiddling and playing with primes. The rest of it is done by hand.
 Still far from perfect, there are things to fix or implement.
 Patches are welcome.
 
+  * For now the program only seeks for the nearest upper prime to the image.
+    So it will generally only modify the last line, unless the image is mostly
+    filled. It would be nice if we could hide the "primificaton" as most as
+    possible in the image pattern. Obviously the bottom right pixel would always
+    be filled. But I guess we can do better than that.
   * Only the PBM ASCII format is supported. It would be nice if we
     could use binary PBM too. It is really easy to implement.
   * The current output format is PBM ASCII, but we could also select between
