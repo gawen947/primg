@@ -39,7 +39,7 @@
 void output(const struct pbm_img *img)
 {
   char geom_string[MAX_GEOM_STRING];
-  unsigned int i, j = 0;
+  int i, j = 0;
   unsigned int prime_size = mpz_sizeinbase(img->number, 2);
   iofile_t out = iobuf_dopen(STDOUT_FILENO);
 
@@ -59,13 +59,13 @@ void output(const struct pbm_img *img)
   snprintf(geom_string, MAX_GEOM_STRING, "%d %d", img->width, img->height);
   iobuf_puts(out, geom_string);
 
-  for(i = img->width * img->height - prime_size ; i ; i--) {
+  for(i = img->width * img->height - prime_size - 1; i ; i--) {
     if(j++ % img->width == 0)
       iobuf_putc('\n', out);
     iobuf_putc('0', out);
   }
 
-  for(i = prime_size ; i ; i--) {
+  for(i = prime_size ; i >= 0 ; i--) {
     if(j++ % img->width == 0)
       iobuf_putc('\n', out);
     iobuf_putc(mpz_tstbit(img->number, i) ? '1' : '0', out);
