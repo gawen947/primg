@@ -39,34 +39,40 @@
 void output(const struct pbm_img *img)
 {
   char geom_string[MAX_GEOM_STRING];
-  int i, j = 0;
-  unsigned int prime_size = mpz_sizeinbase(img->number, 2);
+  int w, h, zeros, i, j = 0;
+  int prime_size = mpz_sizeinbase(img->number, 2);
   iofile_t out = iobuf_dopen(STDOUT_FILENO);
 
-  /* FIXME: It seems that this would likely never happen,
-     but we can cause it to happen on small images.
-     One fix would be to add new leading lines to the image
-     until we can fit the new prime size. */
-  if(img->width * img->height < prime_size)
-    errx(EXIT_FAILURE, "not enough leading zeros");
+  w = img->width;
+  h = img->height;
 
-  verbose("leading zeros %d\n", img->width * img->height - prime_size);
+  if(w * h < prime_size) {
+    int missing = prime_size - w * h;
+    h     += 1 + ((missing - 1) / w); /* ceil(missing / w ) */
+    zeros  = w - missing % w;
+
+    verbose("prime larger than image, height %d->%d\n", img->height, h);
+  }
+  else
+    zeros = w * h - prime_size;
+
+  verbose("leading zeros %d\n", zeros);
 
   iobuf_puts(out, "P1\n");
   iobuf_puts(out, "# CREATOR: " PACKAGE_VERSION "\n");
   iobuf_puts(out, "# URL    : " WEBSITE "\n");
 
-  snprintf(geom_string, MAX_GEOM_STRING, "%d %d", img->width, img->height);
+  snprintf(geom_string, MAX_GEOM_STRING, "%d %d", w, h);
   iobuf_puts(out, geom_string);
 
-  for(i = img->width * img->height - prime_size - 1; i ; i--) {
-    if(j++ % img->width == 0)
+  for(i = zeros; i ; i--) {
+    if(j++ % w == 0)
       iobuf_putc('\n', out);
     iobuf_putc('0', out);
   }
 
-  for(i = prime_size ; i >= 0 ; i--) {
-    if(j++ % img->width == 0)
+  for(i = prime_size - 1; i >= 0 ; i--) {
+    if(j++ % w == 0)
       iobuf_putc('\n', out);
     iobuf_putc(mpz_tstbit(img->number, i) ? '1' : '0', out);
   }
