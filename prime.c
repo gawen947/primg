@@ -27,8 +27,9 @@
 #include <assert.h>
 #include <gmp.h>
 
-#include "safe-call.h"
-#include "verbose.h"
+#include <gawen/safe-call.h>
+#include <gawen/verbose.h>
+
 #include "output.h"
 #include "load.h"
 #include "main.h"

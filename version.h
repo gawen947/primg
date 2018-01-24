@@ -25,7 +25,7 @@
 #ifndef _VERSION_H_
 #define _VERSION_H_
 
-#include "string-utils.h"
+#include <gawen/string.h>
 
 #define PACKAGE "primg"
 #define WEBSITE "http://github.com/gawen947/primg"

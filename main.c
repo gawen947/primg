@@ -29,13 +29,14 @@
 #include <err.h>
 #include <ftw.h>
 
-#include "string-utils.h"
+#include <gawen/verbose.h>
+#include <gawen/string.h>
+#include <gawen/help.h>
+
 #include "version.h"
-#include "verbose.h"
 #include "output.h"
 #include "prime.h"
 #include "main.h"
-#include "help.h"
 #include "load.h"
 
 static void print_help(const char *name)

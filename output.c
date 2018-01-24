@@ -28,10 +28,11 @@
 #include <gmp.h>
 #include <err.h>
 
-#include "safe-call.h"
-#include "verbose.h"
+#include <gawen/safe-call.h>
+#include <gawen/verbose.h>
+#include <gawen/iobuf.h>
+
 #include "version.h"
-#include "iobuf.h"
 #include "load.h"
 
 #define MAX_GEOM_STRING 32

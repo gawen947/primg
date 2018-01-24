@@ -14,6 +14,11 @@ It works well for images up to 128x128 pixels. Beyond that finding the next
 prime gets incredibly difficult. Behind the scene it uses the [GMP library](https://gmplib.org)
 for bit twiddling and playing with primes. The rest of it is done by hand.
 
+### Dependency
+
+  * [GMP library](https://gmplib.org)
+  * [libgawen](https://github.com/gawen947/libgawen)
+
 ### TODO
 
 Still far from perfect, there are things to fix or implement.

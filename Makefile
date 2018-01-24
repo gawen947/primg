@@ -6,7 +6,7 @@ DEPS = $(SRC:.c=.d)
 
 CFLAGS := -O2 -I/usr/local/include -fomit-frame-pointer -std=c99 \
 	-pedantic -Wall -Wextra -MMD -pipe -ggdb
-LDFLAGS := -L/usr/local/lib -lgmp
+LDFLAGS := -L/usr/local/lib -lgmp -lgawen
 
 ifdef VERBOSE
 	Q :=

@@ -27,11 +27,13 @@
 #include <err.h>
 #include <gmp.h>
 
-#include "safe-call.h"
-#include "verbose.h"
+#include <gawen/safe-call.h>
+#include <gawen/verbose.h>
+#include <gawen/common.h>
+#include <gawen/iobuf.h>
+#include <gawen/xatoi.h>
+
 #include "common.h"
-#include "iobuf.h"
-#include "xatoi.h"
 #include "load.h"
 
 #define MAX_ROW_SIZE 65536
